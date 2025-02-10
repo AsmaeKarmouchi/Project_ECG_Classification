@@ -4,9 +4,9 @@ Ce projet vise à classifier automatiquement les battements cardiaques en **5 ca
 
 
 - [Méthodologie](#méthodologie)
-  - [Partie I : DTW](#partie-i--dynamic-time-warping-dtw-par-asmae)
-  - [Partie II : Classification sans prétraitement](#partie-ii--classification-sans-prétraitement-par-alban)
-  - [Partie III : Classification avec ACP](#partie-iii--classification-avec-acp-par-asmae)
+  - [Partie I : DTW  par-asmae](https://github.com/AsmaeKarmouchi/Project_ECG_Classification/blob/main/Projet_ECG_Etudiant_new%20(3).ipynb)
+  - [Partie II : Classification sans prétraitement  par-alban](https://github.com/AsmaeKarmouchi/Project_ECG_Classification/blob/main/Projet_ECG_Etudiant_new%20(3).ipynb)
+  - [Partie III : Classification avec ACP  par-asmae](https://github.com/AsmaeKarmouchi/Project_ECG_Classification/blob/main/Projet_ECG_Etudiant_new%20(3).ipynb)
 
 ---
 
