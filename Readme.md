@@ -1,19 +1,54 @@
-## TODO
+# Projet de Classification des Battements Cardiaques par Analyse ECG
 
-* Faire la partie 2 avec les scaler sur methode supervisé
+Ce projet vise à classifier automatiquement les battements cardiaques en **5 catégories** à partir de signaux ECG, en combinant des méthodes d'apprentissage supervisé, non supervisé et de réduction de dimension.
 
-- Tester les les classification en excluant des données sur les battements de coeurs ( données temporel etc..)
 
-- => cela amenera a peut etre définir des modèles avec des nouveaux hyperparamètre
+- [Méthodologie](#méthodologie)
+  - [Partie I : DTW](#partie-i--dynamic-time-warping-dtw-par-asmae)
+  - [Partie II : Classification sans prétraitement](#partie-ii--classification-sans-prétraitement-par-alban)
+  - [Partie III : Classification avec ACP](#partie-iii--classification-avec-acp-par-asmae)
 
-## INFO
+---
 
-Asmae :
+## 📊 Jeu de données
+- **Source** : Base de données [MIT-BIH Arrhythmia]
+<img src="./DataECG.png" width="800" height="600">
 
-prend les 4 mêmes modèles avec les mêmes hyperparmètres pour la partie 3 
+On distingue 5 battements cardiaques différents : Battements normaux', 'Battements inconnus', 'Battements ectopiques ventriculaires', 'Battements ectopiques supraventriculaires' et 'Battements de fusion'.
 
-=> le but  étant d'optimiser les performance avec l'ACP
+De ces signaux, on extrait des caractéristiques par la librairie TSFEL - *Time Series Features Extraction Library* (https://tsfel.readthedocs.io/en/latest/index.html)
 
-( j'utilise le score accuracy car je sais que tu en a besoin dans la partie 3 mais j'ai créé un nouveau score basé sur la matrice de confusion, le score est obtenu en utilisant la fonction "conf_matrix_score", dedans il faut passer en parametre les etiquettes cible et les etiquettes predite (les Y).
+Les 156 caractéristiques extraites sont divisées selon les domaines :
+- temporel avec 31 caractéristiques comme l'entropie, Max, Min, Absolute Energy ...
+- statistique avec 14 caractéristiques comme écart moyen absolu, écart médian, variance, Kurtosis...
+- spectral  avec 111 caractéristiques comme les coefficients FFT par bande de fréquence, ondelettes...
 
-Pq : le score lié a la matrice de confusion que j'ai créé permet de mieux mettre en valeur la matrice de confusion comparé a l'accuracy score qui donne juste le pourcentage de bonne prédiction/classification. J'ai utilisé ce score pour améliorer mes modèles (régler les hyperparamètres)
+Lien vers le papier expliquant TSFEL : https://www.sciencedirect.com/science/article/pii/S2352711020300017
+
+---
+## 🎯 Objectifs
+- **Classifier 5 types de battements** :  
+  `Normaux`, `Inconnus`, `Ectopiques ventriculaires`, `Ectopiques supraventriculaires`, `Fusion`.
+- Comparer les performances des approches **supervisées** (Random Forest, KNN) et **non supervisées** (K-means, Clustering Hiérarchique).
+- Analyser l’impact de la **réduction de dimension** (ACP) et des **types de caractéristiques** (temporelles, spectrales, statistiques).
+
+---
+
+
+## 💻 Installation
+1. Clonez le dépôt :
+   ```bash
+   git clone https://github.com/AsmaeKarmouchi/Project_ECG_Classification.git
+
+2. Installez les dépendances :
+   ```bash
+    pip install -r requirements.txt
+
+
+## 👥 Contributeurs
+
+Asmae KARMOUCHI :
+➔ DTW, Classification avec ACP.
+
+Alban PERSONNAZ :
+➔ Classification sans ACP, optimisation des modèles.
